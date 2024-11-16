@@ -11,6 +11,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "nexium-security": "^1.0.0"
+    "nexium-security": "^1.0.1"
   }
 }
