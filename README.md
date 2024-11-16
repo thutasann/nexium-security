@@ -6,7 +6,7 @@
 
 ## 🔗 Quick Links
 
-[![NPM Version](https://img.shields.io/npm/v/nexium-security.svg)](https://www.npmjs.com/package/nexium)
+[![NPM Version](https://img.shields.io/npm/v/nexium-security.svg)](https://www.npmjs.com/package/nexium-security)
 [![Documentation](https://img.shields.io/badge/docs-nexium-blue.svg)](https://nexium-security.vercel.app)
 
 - 📚 [Official Documentation](https://nexium-security.vercel.app)
