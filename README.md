@@ -6,7 +6,7 @@
 
 ## 🔗 Quick Links
 
-- 📚 [Official Documentation](https://nexium-docs.vercel.app)
+- 📚 [Official Documentation](https://nexium-security.vercel.app)
 - 📦 [NPM Registry](https://www.npmjs.com/package/nexium-security)
 - 💻 [GitHub Repository](https://github.com/thutasann/nexium-security)
 

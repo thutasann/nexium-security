@@ -48,10 +48,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/thutasann/nexium.git"
+    "url": "https://github.com/thutasann/nexium-security.git"
   },
   "bugs": {
-    "url": "https://github.com/thutasann/nexium/issues"
+    "url": "https://github.com/thutasann/nexium-security/issues"
   },
-  "homepage": "https://github.com/thutasann/nexium#readme"
+  "homepage": "https://github.com/thutasann/nexium-security#readme"
 }
