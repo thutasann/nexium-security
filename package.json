@@ -1,0 +1,57 @@
+{
+  "name": "nexium-security",
+  "version": "1.0.0",
+  "description": "A Node.js security package using native C.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "jest",
+    "benchmark": "cd __test__/benchmark && node index",
+    "build:node": "tsc && npm run minify",
+    "minify": "find lib -name '*.js' -exec terser {} --compress --mangle --output {} \\;",
+    "build:gyp": "node-gyp rebuild",
+    "build": "npm run build:gyp && npm run build:node",
+    "docs": "cd docs && npm run dev",
+    "prebuild": "tsc --declaration --emitDeclarationOnly",
+    "prepublishOnly": "npm run build",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "node",
+    "native",
+    "security",
+    "javascript",
+    "data structures",
+    "utils",
+    "c",
+    "typescript"
+  ],
+  "author": "Thuta Sann",
+  "license": "MIT",
+  "dependencies": {
+    "node-addon-api": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.8.1",
+    "jest": "^29.7.0",
+    "node-gyp": "^9.0.0",
+    "prettier": "^3.3.3",
+    "terser": "^5.36.0",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "build/Release/nexium-security.node",
+    "lib/**/*",
+    "src/node/**/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thutasann/nexium.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thutasann/nexium/issues"
+  },
+  "homepage": "https://github.com/thutasann/nexium#readme"
+}
