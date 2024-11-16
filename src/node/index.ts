@@ -1,1 +1,1 @@
-console.log('Nexium Security')
+export * from './xor'
