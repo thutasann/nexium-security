@@ -1,7 +1,7 @@
-import { xor_encrypt, xor_decrypt } from '../../build/Release/nexium-security.node'
+import { stream_encrypt, stream_decrypt } from '../../build/Release/nexium-security.node'
 
-/** XOR Methods */
-export class NXor {
+/** Stream Cipher Methods */
+export class NStreamCipher {
   /**
    * XOR Encrypt
    * @param input - given input
@@ -9,10 +9,10 @@ export class NXor {
    * @example
    * const input = '{"user":{"name":"John","age":30},"message":"Welcome!"}'
    * const key = 'mySecureKey'
-   * const encrypted = NXor.encrypt(input, key)
+   * const encrypted = NStreamCipher.encrypt(input, key)
    */
   static encrypt(input: string, key: string) {
-    return xor_encrypt(input, key)
+    return stream_encrypt(input, key)
   }
 
   /**
@@ -21,9 +21,9 @@ export class NXor {
    * @param key - key
    * @param salt - salt value
    * @example
-   * const decrypted = NXor.decrypt(encrypted, key);
+   * const decrypted = NStreamCipher.decrypt(encrypted, key);
    */
   static decrypt<T>(encrypted: string, key: string) {
-    return xor_decrypt<T>(encrypted, key)
+    return stream_decrypt<T>(encrypted, key)
   }
 }

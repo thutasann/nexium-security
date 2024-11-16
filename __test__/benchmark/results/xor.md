@@ -1,10 +1,10 @@
 # XOR Benchmark Results
 
-| Method                  | Time (seconds) |
-| ----------------------- | -------------- |
-| Nexium encrypt time     | 0.002          |
-| Javascript encrypt time | 0.015          |
-| -                       | -              |
-| Nexium decrypt time     | 0.002          |
-| Javascript decrypt time | 0.003          |
-| -                       | -              |
+| Method                      | Time (seconds) |
+| --------------------------- | -------------- |
+| Nexium XOR encrypt time     | 0.006          |
+| Javascript XOR encrypt time | 0.015          |
+| -                           | -              |
+| Nexium XOR decrypt time     | 0.002          |
+| Javascript XOR decrypt time | 0.003          |
+| -                           | -              |

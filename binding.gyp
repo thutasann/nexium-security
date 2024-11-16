@@ -6,7 +6,11 @@
         "src/addon/addon.c",
         "src/addon/utils/xor.c",
         "src/addon/shared/xor_helper.c",
-        "src/addon/xor_functions.c"
+        "src/addon/xor_functions.c",
+
+        "src/addon/utils/stream_cipher.c",
+        "src/addon/shared/stream_cipher_helper.c",
+        "src/addon/stream_cipher_functions.c"
       ],
       "include_dirs": [
         "<!@(node -e \"require('node-addon-api').include\")"

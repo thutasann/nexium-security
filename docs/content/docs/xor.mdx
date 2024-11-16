@@ -23,6 +23,6 @@ const encrypted = NXor.encrypt(input, key)
 
 ## Decrypt
 
-```js
-const decrypted = NXor.decrypt(encrypted, key)
+```ts
+const decrypted = NXor.decrypt<{ name: string }>(encrypted, key)
 ```

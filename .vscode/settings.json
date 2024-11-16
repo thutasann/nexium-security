@@ -46,7 +46,8 @@
     "leetcode_helpers.h": "c",
     "xor_helpers.h": "c",
     "buffer.h": "c",
-    "bio.h": "c"
+    "bio.h": "c",
+    "stream_cipher.h": "c"
   },
   "C_Cpp.errorSquiggles": "enabled"
 }

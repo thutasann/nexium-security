@@ -16,21 +16,18 @@ async function xor_benchmark_test() {
   /** Prepare the results array for table @type { any } */
   const results = []
 
-  const result = NXor.encrypt(stringified_json, key)
-  console.log('result', result)
-
   // ----------- Encrypt Time
   const nApiEncryptTime = benchmark_args(() => NXor.encrypt(stringified_json, key), [], iterations)
   const jsEncryptTime = benchmark_args(() => xorEncryptDecrypt(stringified_json, key), [], iterations)
-  results.push({ Method: 'Nexium encrypt time', Time: nApiEncryptTime.toFixed(3) })
-  results.push({ Method: 'Javascript encrypt time', Time: jsEncryptTime.toFixed(3) })
+  results.push({ Method: 'Nexium XOR encrypt time', Time: nApiEncryptTime.toFixed(3) })
+  results.push({ Method: 'Javascript XOR encrypt time', Time: jsEncryptTime.toFixed(3) })
   results.push({})
 
   // ----------- Decrypt Time
   const nApiDecryptTime = benchmark_args(() => NXor.decrypt(encrypted_string, key), [], iterations)
   const jsDecryptTime = benchmark_args(() => xorEncryptDecrypt(encrypted_string, key), [], iterations)
-  results.push({ Method: 'Nexium decrypt time', Time: nApiDecryptTime.toFixed(3) })
-  results.push({ Method: 'Javascript decrypt time', Time: jsDecryptTime.toFixed(3) })
+  results.push({ Method: 'Nexium XOR decrypt time', Time: nApiDecryptTime.toFixed(3) })
+  results.push({ Method: 'Javascript XOR decrypt time', Time: jsDecryptTime.toFixed(3) })
   results.push({})
 
   await updateResult(results, './results/xor.md', 'XOR Benchmark')

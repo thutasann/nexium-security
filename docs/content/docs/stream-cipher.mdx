@@ -1,0 +1,28 @@
+---
+title: Stream Cipher
+description: Encrypt/Decrypt with Stream Cipher Security
+---
+
+## Import the `NStreamCipher`
+
+```js
+const { NStreamCipher } = require('nexium-security')
+```
+
+---
+
+## Encrypt
+
+```js
+const input = '{"user":{"name":"John","age":30},"message":"Welcome!"}'
+const key = 'mySecureKey'
+const encrypted = NStreamCipher.encrypt(input, key)
+```
+
+---
+
+## Decrypt
+
+```ts
+const decrypted = NStreamCipher.decrypt<{ name: string }>(encrypted, key)
+```

@@ -14,7 +14,9 @@
 
 ## 🚀 **Features**
 
-- XOR Security
+- **High-Performance Utilities**: Leverage fast Security utility functions built in C, ensuring your applications run smoother and faster.
+- **Seamless TypeScript Support**: Enjoy full TypeScript support, allowing for type-safe code and improved developer experience.
+- **Easy to Use**: Get started quickly with an intuitive API and minimal setup. No complex configurations needed - just install and start coding.
 
 ---
 

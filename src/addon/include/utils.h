@@ -7,4 +7,8 @@
 napi_value XOREncrypt(napi_env env, napi_callback_info info);
 napi_value XORDecrypt(napi_env env, napi_callback_info info);
 
+// ------ Stream Cipher Functions
+napi_value StreamCipherEncrypt(napi_env env, napi_callback_info info);
+napi_value StreamCipherDecrypt(napi_env env, napi_callback_info info);
+
 #endif
