@@ -41,6 +41,25 @@ function benchmark_args(fn, args, runs = 1000, logResult = false) {
   return averageDuration
 }
 
+/**
+ * XOR Encrypt Decrypt
+ * @param {string} input
+ * @param {string} key
+ * @returns
+ */
+function xorEncryptDecrypt(input, key) {
+  const keyLength = key.length
+  let result = ''
+
+  for (let i = 0; i < input.length; i++) {
+    const charCode = input.charCodeAt(i) ^ key.charCodeAt(i % keyLength)
+    result += String.fromCharCode(charCode)
+  }
+
+  return result
+}
+
 module.exports = {
   benchmark_args,
+  xorEncryptDecrypt,
 }

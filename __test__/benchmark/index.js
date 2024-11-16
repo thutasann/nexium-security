@@ -1,6 +1,7 @@
 // @ts-check
+const { xor_benchmark_test } = require('./xor.benchmark')
 
 /** benchmark main fn */
 ;(async function main() {
-  console.log('From benchmark')
+  await xor_benchmark_test()
 })()

@@ -80,9 +80,9 @@ Benchmark Results can be found at [Here](./__test__/benchmark/results/).
 
 We welcome contributions! If you have suggestions or improvements, please fork the repository and submit a pull request.
 
-## 🔥 Stay Ahead with Nexium
+## 🔥 Stay Ahead with Nexium Security
 
-Supercharge your Node.js applications with high-performance, native C utilities and experience the power of Nexium!
+Secure your Node.js applications with high-performance, native C security utilities and experience the power of Nexium Security!
 
 ## Authors
 

@@ -6,6 +6,7 @@
         "src/addon/addon.c",
         "src/addon/utils/xor.c",
         "src/addon/shared/xor_helper.c",
+        "src/addon/xor_functions.c"
       ],
       "include_dirs": [
         "<!@(node -e \"require('node-addon-api').include\")"
