@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
+    "test": "jest --maxWorkers=2",
     "benchmark": "cd __test__/benchmark && node index",
     "build:node": "tsc && npm run minify",
     "minify": "find lib -name '*.js' -exec terser {} --compress --mangle --output {} \\;",
@@ -13,8 +14,7 @@
     "docs": "cd docs && npm run dev",
     "prebuild": "tsc --declaration --emitDeclarationOnly",
     "prepublishOnly": "npm run build",
-    "prepare": "npm run build",
-    "test": "node --max_old_space_size=4096 ./node_modules/.bin/jest"
+    "prepare": "npm run build"
   },
   "keywords": [
     "node",
