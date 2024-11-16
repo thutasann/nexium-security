@@ -35,5 +35,5 @@ jobs:
       #   env:
       #     NODE_OPTIONS: '--max_old_space_size=4096'
 
-      - name: Run Benchmark
-        run: npm run benchmark
+      # - name: Run Benchmark
+      #   run: npm run benchmark
