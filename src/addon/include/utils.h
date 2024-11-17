@@ -17,5 +17,8 @@ napi_value RetrieveSecret(napi_env env, napi_callback_info info);
 
 // ------- Middleware Functions
 napi_value SanitizeInput(napi_env env, napi_callback_info info);
+napi_value set_blacklisted_ips(napi_env env, napi_callback_info info);
+napi_value set_malicious_domains(napi_env env, napi_callback_info info);
+napi_value filter_request(napi_env env, napi_callback_info info);
 
 #endif

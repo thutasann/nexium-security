@@ -47,7 +47,8 @@
     "xor_helpers.h": "c",
     "buffer.h": "c",
     "bio.h": "c",
-    "stream_cipher.h": "c"
+    "stream_cipher.h": "c",
+    "middleware_helpers.h": "c"
   },
   "C_Cpp.errorSquiggles": "enabled"
 }

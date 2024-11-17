@@ -13,8 +13,9 @@
         "src/addon/stream_cipher_functions.c",
 
         "src/addon/utils/sanitize_input.c",
+        "src/addon/utils/filter_request.c",
         "src/addon/shared/sanitize_helper.c",
-        "src/addon/middleware_functions.c"
+        "src/addon/middleware_functions.c",
       ],
       "include_dirs": [
         "<!@(node -e \"require('node-addon-api').include\")"
