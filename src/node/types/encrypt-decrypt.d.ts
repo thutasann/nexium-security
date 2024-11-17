@@ -7,4 +7,6 @@ declare module '*.node' {
   // ----------- Stream Cipher Functionse
   export function stream_encrypt(input: string, key: string): string
   export function stream_decrypt<T>(encrypted: string, key: string): T
+  export function storeSecret(input: string, key: string): string
+  export function retrieveSecret<T>(encrypted: string, key: string): T
 }

@@ -48,3 +48,14 @@ describe('Stream Cipher RC4 Encryption/Decryption', () => {
     expect(decrypted).toBe(input)
   })
 })
+
+test('Securely store and retrieve a secret', () => {
+  const key = 'mysecurekey'
+  const secret = 'SensitiveData'
+
+  const encryptedSecret = NStreamCipher.storeSecret(secret, key)
+
+  const decryptedSecret = NStreamCipher.retrieveSecret(encryptedSecret, key)
+
+  expect(decryptedSecret).toBe(secret)
+})

@@ -26,3 +26,21 @@ const encrypted = NStreamCipher.encrypt(input, key)
 ```ts
 const decrypted = NStreamCipher.decrypt<{ name: string }>(encrypted, key)
 ```
+
+---
+
+## storeSecret
+
+```ts
+const key = 'mysecurekey'
+const secret = 'SensitiveData'
+const encryptedSecret = NStreamCipher.storeSecret(secret, key)
+```
+
+---
+
+## retrieveSecret
+
+```ts
+const decryptedSecret = NStreamCipher.retrieveSecret(encryptedSecret, key)
+```

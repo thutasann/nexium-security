@@ -75,3 +75,74 @@ napi_value StreamCipherDecrypt(napi_env env, napi_callback_info info) {
     free(output);
     return result;
 }
+
+/** Securely Store Secret */
+napi_value StoreSecret(napi_env env, napi_callback_info info) {
+    size_t argc = 2;
+    napi_value args[2];
+    napi_get_cb_info(env, info, &argc, args, NULL, NULL);
+
+    // Get secret and key
+    size_t secret_len, key_len;
+    napi_get_value_string_utf8(env, args[0], NULL, 0, &secret_len);
+    napi_get_value_string_utf8(env, args[1], NULL, 0, &key_len);
+    char *secret = (char *)malloc(secret_len + 1);
+    char *key = (char *)malloc(key_len + 1);
+    napi_get_value_string_utf8(env, args[0], secret, secret_len + 1, NULL);
+    napi_get_value_string_utf8(env, args[1], key, key_len + 1, NULL);
+
+    // Perform encryption
+    unsigned char S[256];
+    rc4_key_setup(S, (unsigned char *)key, key_len);
+    unsigned char *output = (unsigned char *)malloc(secret_len);
+    rc4_crypt(S, (unsigned char *)secret, output, secret_len);
+
+    // Encode output as base64
+    char *base64_output = stream_base64_encode(output, secret_len);
+
+    // Return the securely stored secret as base64
+    napi_value result;
+    napi_create_string_utf8(env, base64_output, strlen(base64_output), &result);
+
+    free(secret);
+    free(key);
+    free(output);
+    free(base64_output);
+    return result;
+}
+
+/** Retrieve Secret */
+napi_value RetrieveSecret(napi_env env, napi_callback_info info) {
+    size_t argc = 2;
+    napi_value args[2];
+    napi_get_cb_info(env, info, &argc, args, NULL, NULL);
+
+    // Get encrypted secret and key
+    size_t encrypted_len, key_len;
+    napi_get_value_string_utf8(env, args[0], NULL, 0, &encrypted_len);
+    napi_get_value_string_utf8(env, args[1], NULL, 0, &key_len);
+    char *encrypted = (char *)malloc(encrypted_len + 1);
+    char *key = (char *)malloc(key_len + 1);
+    napi_get_value_string_utf8(env, args[0], encrypted, encrypted_len + 1, NULL);
+    napi_get_value_string_utf8(env, args[1], key, key_len + 1, NULL);
+
+    // Decode encrypted secret from base64
+    size_t decoded_len;
+    unsigned char *decoded_input = stream_base64_decode(encrypted, &decoded_len);
+
+    // Perform decryption
+    unsigned char S[256];
+    rc4_key_setup(S, (unsigned char *)key, key_len);
+    unsigned char *output = (unsigned char *)malloc(decoded_len);
+    rc4_crypt(S, decoded_input, output, decoded_len);
+
+    // Return the decrypted secret as UTF-8
+    napi_value result;
+    napi_create_string_utf8(env, (char *)output, decoded_len, &result);
+
+    free(encrypted);
+    free(key);
+    free(decoded_input);
+    free(output);
+    return result;
+}

@@ -11,4 +11,8 @@ napi_value XORDecrypt(napi_env env, napi_callback_info info);
 napi_value StreamCipherEncrypt(napi_env env, napi_callback_info info);
 napi_value StreamCipherDecrypt(napi_env env, napi_callback_info info);
 
+// ------ Store Secret
+napi_value StoreSecret(napi_env env, napi_callback_info info);
+napi_value RetrieveSecret(napi_env env, napi_callback_info info);
+
 #endif
