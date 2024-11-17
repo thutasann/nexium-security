@@ -15,4 +15,7 @@ napi_value StreamCipherDecrypt(napi_env env, napi_callback_info info);
 napi_value StoreSecret(napi_env env, napi_callback_info info);
 napi_value RetrieveSecret(napi_env env, napi_callback_info info);
 
+// ------- Middleware Functions
+napi_value SanitizeInput(napi_env env, napi_callback_info info);
+
 #endif

@@ -1,4 +1,4 @@
-import { xor_encrypt, xor_decrypt } from '../../build/Release/nexium-security.node'
+import { xor_encrypt, xor_decrypt } from '../../../build/Release/nexium-security.node'
 
 /** XOR Methods */
 export class NXor {
