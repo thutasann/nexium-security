@@ -3,7 +3,7 @@ import {
   stream_decrypt,
   storeSecret as storeSecretFn,
   retrieveSecret as retrieveSecretFn,
-} from '../../build/Release/nexium-security.node'
+} from '../../../build/Release/nexium-security.node'
 
 /** Stream Cipher Methods */
 export class NStreamCipher {

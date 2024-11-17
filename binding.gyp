@@ -10,7 +10,11 @@
 
         "src/addon/utils/stream_cipher.c",
         "src/addon/shared/stream_cipher_helper.c",
-        "src/addon/stream_cipher_functions.c"
+        "src/addon/stream_cipher_functions.c",
+
+        "src/addon/utils/sanitize_input.c",
+        "src/addon/shared/sanitize_helper.c",
+        "src/addon/middleware_functions.c"
       ],
       "include_dirs": [
         "<!@(node -e \"require('node-addon-api').include\")"

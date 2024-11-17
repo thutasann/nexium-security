@@ -1,0 +1,20 @@
+---
+title: Nodejs/Expressjs Middlewares
+description: Security Middlewares for Nodejs Expressjs applications
+---
+
+## Import the `NMiddleware`
+
+```js
+const { NMiddleware } = require('nexium-security')
+```
+
+---
+
+## sanitizeInput
+
+```js
+const express = require('express')
+const app = express()
+app.use(NMiddleware.sanitizeInput)
+```
