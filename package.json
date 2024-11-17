@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "test": "jest --runInBand",
+    "test": "jest",
     "benchmark": "cd __test__/benchmark && node index",
     "build:node": "tsc && npm run minify",
     "minify": "find lib -name '*.js' -exec terser {} --compress --mangle --output {} \\;",
