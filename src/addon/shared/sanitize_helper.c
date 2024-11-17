@@ -10,7 +10,8 @@ char *sanitize_and_escape(const char *input) {
         return NULL;
 
     size_t len = strlen(input);
-    char *output = (char *)malloc(len * 2 + 1);
+    // Increase buffer size to accommodate more escape sequences
+    char *output = (char *)malloc(len * 4 + 1); // Increased multiplier for safety
     if (!output)
         return NULL;
 
@@ -18,6 +19,7 @@ char *sanitize_and_escape(const char *input) {
     for (size_t i = 0; i < len; i++) {
         char c = input[i];
         switch (c) {
+        // ... existing HTML escapes ...
         case '<':
             strcat(&output[j], "&lt;");
             j += 4;
@@ -37,6 +39,31 @@ char *sanitize_and_escape(const char *input) {
         case '\'':
             strcat(&output[j], "&#39;");
             j += 5;
+            break;
+        // Add SQL injection protection
+        case ';':
+            output[j++] = '\\';
+            output[j++] = ';';
+            break;
+        case '-': // Protect against comment attacks
+            output[j++] = '\\';
+            output[j++] = '-';
+            break;
+        case '/': // Protect against comment attacks
+            output[j++] = '\\';
+            output[j++] = '/';
+            break;
+        case '\\':
+            output[j++] = '\\';
+            output[j++] = '\\';
+            break;
+        case '%': // Protect against LIKE attacks
+            output[j++] = '\\';
+            output[j++] = '%';
+            break;
+        case '_': // Protect against LIKE attacks
+            output[j++] = '\\';
+            output[j++] = '_';
             break;
         default:
             if (isprint(c)) {
