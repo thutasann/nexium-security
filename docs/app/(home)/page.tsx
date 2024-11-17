@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import Hero from './_components/Hero'
 import Cta from './_components/Cta'
 import Features from './_components/Features'
@@ -9,6 +8,7 @@ export default function HomePage() {
       <div className="max-w-3xl space-y-6">
         <Hero />
         <Cta />
+        <Features />
       </div>
     </main>
   )

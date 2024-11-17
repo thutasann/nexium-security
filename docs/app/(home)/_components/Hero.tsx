@@ -10,8 +10,8 @@ function Hero() {
       {/* Banner paragraph */}
       <div className="max-w-3xl mx-auto">
         <div className="text-base text-center text-muted-foregroundrounded-lg p-6">
-          <strong>Nexium</strong> is a cutting-edge Node.js security package all powered by native C for optimal
-          performance. <br />
+          <strong>Nexium Security</strong> is a cutting-edge Node.js security package <br /> all powered by native C for
+          optimal performance. <br />
           <em className="block mt-3 text-sm italic">
             "Your gateway to building amazing secured nodejs applications with Nexium Security"
           </em>
