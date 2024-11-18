@@ -6,4 +6,6 @@ declare module '*.node' {
   export function filterRequest(clientIp: string, host: string): boolean
   export function validateHeaders(headers: any): boolean
   export function addSecurityHeaders(): any
+  export function generateCSRFToken(secretKey: string): string
+  export function validateCSRFToken(clientToken: string | string[] | undefined, secretKey): boolean
 }

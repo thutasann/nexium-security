@@ -6,6 +6,8 @@ import {
   setMaliciousDomains,
   validateHeaders,
   addSecurityHeaders,
+  generateCSRFToken,
+  validateCSRFToken,
 } from '../../../build/Release/nexium-security.node'
 
 /**
@@ -88,5 +90,29 @@ export class NMiddleware {
     })
 
     next()
+  }
+
+  /**
+   * CSRF Middleware
+   * @param secretKey - secret key to generate CSRF Token
+   */
+  static csrfMiddleware(secretKey: string) {
+    if (!secretKey) {
+      throw new Error('Secret key is required for CSRF middleware')
+    }
+
+    return (req: Request, res: Response | any, next: NextFunction) => {
+      if (req.method === 'GET') {
+        const token = generateCSRFToken(secretKey)
+        console.log('token', token)
+        res.setHeader('X-CSRF-Token', token)
+      } else {
+        const clientToken = req.headers['x-csrf-token']
+        if (!clientToken || !validateCSRFToken(clientToken, secretKey)) {
+          return res.status(403).send('Forbidden: Invalid CSRF Token')
+        }
+      }
+      next()
+    }
   }
 }

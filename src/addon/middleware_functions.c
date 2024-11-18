@@ -20,4 +20,10 @@ void InitMiddlewareFunctions(napi_env env, napi_value exports) {
     napi_set_named_property(env, exports, "validateHeaders", validate_headers);
     napi_create_function(env, NULL, 0, AddSecurityHeaders, NULL, &add_security_headers);
     napi_set_named_property(env, exports, "addSecurityHeaders", add_security_headers);
+
+    napi_value generate_csrf_token, validate_csrf_token;
+    napi_create_function(env, NULL, 0, GenerateCSRFToken, NULL, &generate_csrf_token);
+    napi_set_named_property(env, exports, "generateCSRFToken", generate_csrf_token);
+    napi_create_function(env, NULL, 0, ValidateCSRFToken, NULL, &validate_csrf_token);
+    napi_set_named_property(env, exports, "validateCSRFToken", validate_csrf_token);
 }

@@ -22,5 +22,7 @@ napi_value set_malicious_domains(napi_env env, napi_callback_info info);
 napi_value filter_request(napi_env env, napi_callback_info info);
 napi_value ValidateHeaders(napi_env env, napi_callback_info info);
 napi_value AddSecurityHeaders(napi_env env, napi_callback_info info);
+napi_value GenerateCSRFToken(napi_env env, napi_callback_info info);
+napi_value ValidateCSRFToken(napi_env env, napi_callback_info info);
 
 #endif
