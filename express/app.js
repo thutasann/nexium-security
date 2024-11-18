@@ -11,9 +11,10 @@ app.use(bodyParser.json())
 app.use(NMiddleware.sanitizeInput)
 NMiddleware.setupFilters(['192.168.1.1', '203.0.113.0'], ['malicious.com', 'badactor.net'])
 app.use(NMiddleware.filterRequest)
+app.use(NMiddleware.headerInspection)
 
 app.get('/', (req, res) => {
-  res.send('Welcome!')
+  res.send('Hello, World!')
 })
 
 // testing routes

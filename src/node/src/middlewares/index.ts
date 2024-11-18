@@ -4,6 +4,8 @@ import {
   filterRequest as filterRequestFn,
   setBlacklistedIPs,
   setMaliciousDomains,
+  validateHeaders,
+  addSecurityHeaders,
 } from '../../../build/Release/nexium-security.node'
 
 /**
@@ -64,5 +66,27 @@ export class NMiddleware {
   static setupFilters(ips: string[], domains: string[]) {
     setBlacklistedIPs(ips)
     setMaliciousDomains(domains)
+  }
+
+  /**
+   * Header Inspection Middleware
+   * - Block insecure or malicious headers.
+   * - Add security headers like Strict-Transport-Security (HSTS).
+   * @param req - request
+   * @param res - response
+   * @param next - next function
+   */
+  static headerInspection(req: Request, res: Response | any, next: NextFunction) {
+    const isValid = validateHeaders(req.headers)
+    if (!isValid) {
+      return res.status(400).send('Blocked due to insecure headers.')
+    }
+
+    const securityHeaders = addSecurityHeaders()
+    Object.keys(securityHeaders).forEach((key) => {
+      res.setHeader(key, securityHeaders[key])
+    })
+
+    next()
   }
 }

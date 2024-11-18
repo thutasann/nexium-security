@@ -48,7 +48,8 @@
     "buffer.h": "c",
     "bio.h": "c",
     "stream_cipher.h": "c",
-    "middleware_helpers.h": "c"
+    "middleware_helpers.h": "c",
+    "util.h": "c"
   },
   "C_Cpp.errorSquiggles": "enabled"
 }
