@@ -14,4 +14,10 @@ void InitMiddlewareFunctions(napi_env env, napi_value exports) {
     napi_set_named_property(env, exports, "setMaliciousDomains", setDomainsFn);
     napi_create_function(env, NULL, 0, filter_request, NULL, &filterFn);
     napi_set_named_property(env, exports, "filterRequest", filterFn);
+
+    napi_value validate_headers, add_security_headers;
+    napi_create_function(env, NULL, 0, ValidateHeaders, NULL, &validate_headers);
+    napi_set_named_property(env, exports, "validateHeaders", validate_headers);
+    napi_create_function(env, NULL, 0, AddSecurityHeaders, NULL, &add_security_headers);
+    napi_set_named_property(env, exports, "addSecurityHeaders", add_security_headers);
 }

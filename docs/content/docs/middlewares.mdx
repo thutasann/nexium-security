@@ -29,3 +29,16 @@ filter request for IPs and Domains. if the host or ip is in the filter list, it 
 NMiddleware.setupFilters(['192.168.1.1', '203.0.113.0'], ['malicious.com', 'badactor.net'])
 app.use(NMiddleware.filterRequest)
 ```
+
+---
+
+## headerInspection
+
+Middleware for HTTP Header Inspection to validate and filter HTTP headers for anomalies
+
+- Block insecure or malicious headers.
+- Add security headers like Strict-Transport-Security (HSTS).
+
+```js
+app.use(NMiddleware.headerInspection)
+```
