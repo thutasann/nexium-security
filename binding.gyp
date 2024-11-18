@@ -15,6 +15,7 @@
         "src/addon/utils/sanitize_input.c",
         "src/addon/utils/filter_request.c",
         "src/addon/utils/header_inspector.c",
+        "src/addon/utils/csrf_token.c",
         "src/addon/shared/sanitize_helper.c",
         "src/addon/middleware_functions.c",
       ],

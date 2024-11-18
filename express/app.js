@@ -2,6 +2,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const { NMiddleware } = require('../lib')
+const { IPS, DOMAINS } = require('./utils/constants')
 
 /** express app for testing purpose */
 const app = express()
@@ -9,9 +10,10 @@ const app = express()
 // middlewares
 app.use(bodyParser.json())
 app.use(NMiddleware.sanitizeInput)
-NMiddleware.setupFilters(['192.168.1.1', '203.0.113.0'], ['malicious.com', 'badactor.net'])
+NMiddleware.setupFilters(IPS, DOMAINS)
 app.use(NMiddleware.filterRequest)
 app.use(NMiddleware.headerInspection)
+// app.use(NMiddleware.csrfMiddleware('dynamic-secret-key'))
 
 app.get('/', (req, res) => {
   res.send('Hello, World!')
