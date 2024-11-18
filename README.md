@@ -17,9 +17,9 @@
 
 ## 🚀 **Features**
 
-- **High-Performance Utilities**: Leverage fast Security utility functions built in C, ensuring your applications run smoother and faster.
-- **Seamless TypeScript Support**: Enjoy full TypeScript support, allowing for type-safe code and improved developer experience.
-- **Easy to Use**: Get started quickly with an intuitive API and minimal setup. No complex configurations needed - just install and start coding.
+- **Native C Performance**: Built entirely in C for maximum performance and low-level system access, providing robust security primitives.
+- **Memory-Safe Operations**: Carefully designed with secure memory management and bounds checking to prevent common security vulnerabilities.
+- **Cryptographic Primitives**: Access to low-level cryptographic functions and secure random number generation for building trusted applications.
 
 ---
 
