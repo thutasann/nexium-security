@@ -49,7 +49,10 @@
     "bio.h": "c",
     "stream_cipher.h": "c",
     "middleware_helpers.h": "c",
-    "util.h": "c"
+    "util.h": "c",
+    "zlib.h": "c",
+    "encode.h": "c",
+    "decode.h": "c"
   },
   "C_Cpp.errorSquiggles": "enabled"
 }

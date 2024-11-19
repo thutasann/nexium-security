@@ -8,6 +8,7 @@ import {
   addSecurityHeaders,
   generateCSRFToken,
   validateCSRFToken,
+  compressZlib,
 } from '../../../build/Release/nexium-security.node'
 
 /**
@@ -113,6 +114,28 @@ export class NMiddleware {
         }
       }
       next()
+    }
+  }
+
+  /**
+   * zlib compression
+   * @param req - request
+   * @param res - response
+   * @param next - next function
+   */
+  static zlib_compression(req: Request, res: Response | any, next: NextFunction) {
+    try {
+      const originalSend = res.send
+
+      res.send = function (data: any) {
+        const compressedData = compressZlib(data)
+        res.setHeader('content-encoding', 'gzip')
+        originalSend.call(this, compressedData)
+      }
+
+      next()
+    } catch (error) {
+      next(error)
     }
   }
 }

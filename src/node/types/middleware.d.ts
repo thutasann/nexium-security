@@ -8,4 +8,5 @@ declare module '*.node' {
   export function addSecurityHeaders(): any
   export function generateCSRFToken(secretKey: string): string
   export function validateCSRFToken(clientToken: string | string[] | undefined, secretKey): boolean
+  export function compressZlib(data: any): any
 }
