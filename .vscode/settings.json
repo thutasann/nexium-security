@@ -52,7 +52,8 @@
     "util.h": "c",
     "zlib.h": "c",
     "encode.h": "c",
-    "decode.h": "c"
+    "decode.h": "c",
+    "rand.h": "c"
   },
   "C_Cpp.errorSquiggles": "enabled"
 }

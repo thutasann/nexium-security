@@ -32,4 +32,12 @@ void InitMiddlewareFunctions(napi_env env, napi_value exports) {
     napi_set_named_property(env, exports, "compressZlib", compress_zlib);
     napi_create_function(env, NULL, 0, DecompressZlib, NULL, &decompress_zlib);
     napi_set_named_property(env, exports, "decompressZlib", decompress_zlib);
+
+    napi_value generate_session_id, store_session, validate_session;
+    napi_create_function(env, NULL, 0, GenerateSessionId, NULL, &generate_session_id);
+    napi_set_named_property(env, exports, "generateSessionId", generate_session_id);
+    napi_create_function(env, NULL, 0, StoreSession, NULL, &store_session);
+    napi_set_named_property(env, exports, "storeSession", store_session);
+    napi_create_function(env, NULL, 0, ValidateSession, NULL, &validate_session);
+    napi_set_named_property(env, exports, "validateSession", validate_session);
 }

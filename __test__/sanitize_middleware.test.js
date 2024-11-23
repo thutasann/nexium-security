@@ -1,10 +1,10 @@
 // @ts-check
 const request = require('supertest')
-const app = require('../express/app')
+const sanitize_app = require('../express/sanitize_app')
 
 describe('Sanitize Middleware', () => {
   test('Sanitizes and escapes dangerous characters', async () => {
-    const response = await request(app)
+    const response = await request(sanitize_app)
       .post('/submit')
       .send({ name: '<script>alert("xss")</script>', comment: 'Hello & Goodbye' })
 
@@ -15,7 +15,7 @@ describe('Sanitize Middleware', () => {
   })
 
   test('Sanitizes and escapes SQL injection attempts', async () => {
-    const response = await request(app).post('/submit').send({
+    const response = await request(sanitize_app).post('/submit').send({
       username: "admin'; DROP TABLE users; --",
       query: "SELECT * FROM users WHERE name LIKE '%admin%'",
     })
@@ -27,7 +27,7 @@ describe('Sanitize Middleware', () => {
   })
 
   test('Sanitizes NoSQL injection attempts', async () => {
-    const response = await request(app).post('/submit').send({
+    const response = await request(sanitize_app).post('/submit').send({
       username: '{"$gt": ""}',
       password: '{"$ne": null}',
       query: '{"$where": "function() { return true }"}',
@@ -46,12 +46,12 @@ describe('Sanitize Middleware', () => {
   })
 
   test('Leaves normal strings unchanged', async () => {
-    const response = await request(app).post('/submit').send({ message: 'Safe content' })
+    const response = await request(sanitize_app).post('/submit').send({ message: 'Safe content' })
     expect(response.body.sanitizedBody).toEqual({ message: 'Safe content' })
   })
 
   test('Handles empty input gracefully', async () => {
-    const response = await request(app).post('/submit').send({ emptyField: '' })
+    const response = await request(sanitize_app).post('/submit').send({ emptyField: '' })
     expect(response.body.sanitizedBody).toEqual({ emptyField: '' })
   })
 })

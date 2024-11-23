@@ -9,6 +9,9 @@ import {
   generateCSRFToken,
   validateCSRFToken,
   compressZlib,
+  validateSession,
+  generateSessionId,
+  storeSession,
 } from '../../../build/Release/nexium-security.node'
 
 /**
@@ -137,5 +140,43 @@ export class NMiddleware {
     } catch (error) {
       next(error)
     }
+  }
+
+  /**
+   * secure session middleware
+   * @param req - request
+   * @param res - response
+   * @param next - next function
+   */
+  static secure_session(req: Request, res: Response | any, next: NextFunction) {
+    try {
+      const sessionId = req.cookies?.session_id || ''
+
+      if (!sessionId || !validateSession(sessionId)) {
+        const newSessionId = generateSessionId()
+        storeSession(newSessionId)
+        res.cookie('session_id', newSessionId, { httpOnly: true, secure: true })
+      }
+
+      next()
+    } catch (error) {
+      console.error('session error :: ', error)
+      next(error)
+    }
+  }
+
+  /** generate session id  */
+  static generateSessionIdFn() {
+    return generateSessionId()
+  }
+
+  /** store session */
+  static storeSessionFn(sessionId: string) {
+    return storeSession(sessionId)
+  }
+
+  /** validate session */
+  static validateSessionFn(sessionId: string) {
+    return validateSession(sessionId)
   }
 }
