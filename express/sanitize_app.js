@@ -5,22 +5,18 @@ const { NMiddleware } = require('../lib')
 const { IPS, DOMAINS } = require('./utils/constants')
 
 /** express app for testing purpose */
-const app = express()
+const sanitize_app = express()
 
 // middlewares
-app.use(bodyParser.json())
-app.use(NMiddleware.sanitizeInput)
-NMiddleware.setupFilters(IPS, DOMAINS)
-app.use(NMiddleware.filterRequest)
-app.use(NMiddleware.headerInspection)
-// app.use(NMiddleware.csrfMiddleware('dynamic-secret-key'))
+sanitize_app.use(bodyParser.json())
+sanitize_app.use(NMiddleware.sanitizeInput)
 
-app.get('/', (req, res) => {
+sanitize_app.get('/', (req, res) => {
   res.send('Hello, World!')
 })
 
 // testing routes
-app.post('/submit', (req, res) => {
+sanitize_app.post('/submit', (req, res) => {
   res.json({ sanitizedBody: req.body })
 })
 
@@ -28,4 +24,4 @@ app.post('/submit', (req, res) => {
 //   console.log(`Express app is listening on http://localhost:${3000} ✅`)
 // })
 
-module.exports = app
+module.exports = sanitize_app

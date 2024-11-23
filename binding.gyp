@@ -17,8 +17,9 @@
         "src/addon/utils/header_inspector.c",
         "src/addon/utils/csrf_token.c",
         "src/addon/utils/zlib_compression.c",
+        "src/addon/utils/secure_session.c",
         "src/addon/shared/sanitize_helper.c",
-        "src/addon/middleware_functions.c",
+        "src/addon/middleware_functions.c"
       ],
       "include_dirs": [
         "<!@(node -e \"require('node-addon-api').include\")"

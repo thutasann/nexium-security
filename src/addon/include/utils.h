@@ -26,5 +26,8 @@ napi_value GenerateCSRFToken(napi_env env, napi_callback_info info);
 napi_value ValidateCSRFToken(napi_env env, napi_callback_info info);
 napi_value CompressZlib(napi_env env, napi_callback_info info);
 napi_value DecompressZlib(napi_env env, napi_callback_info info);
+napi_value GenerateSessionId(napi_env env, napi_callback_info info);
+napi_value StoreSession(napi_env env, napi_callback_info info);
+napi_value ValidateSession(napi_env env, napi_callback_info info);
 
 #endif

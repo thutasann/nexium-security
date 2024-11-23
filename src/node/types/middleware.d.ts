@@ -9,4 +9,7 @@ declare module '*.node' {
   export function generateCSRFToken(secretKey: string): string
   export function validateCSRFToken(clientToken: string | string[] | undefined, secretKey): boolean
   export function compressZlib(data: any): any
+  export function generateSessionId(): string
+  export function validateSession(session: any): boolean
+  export function storeSession(newSessionId: string): void
 }
