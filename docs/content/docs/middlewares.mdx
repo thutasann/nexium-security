@@ -52,3 +52,19 @@ CSRF (Cross-Site Request Forgery) protection middleware that generates and valid
 ```js
 app.use(NMiddleware.csrfMiddleware('dynamic-secret-key'))
 ```
+
+## secure_session
+
+```js
+const cookieParser = require('cookie-parser')
+
+app.use(cookieParser())
+app.use(NMiddleware.secure_session)
+
+// generate/validate sessionId
+const sessionId = NMiddleware.generateSessionIdFn()
+
+const validateSession = NMiddleware.validateSessionFn(sessionId) // true /false
+```
+
+---
